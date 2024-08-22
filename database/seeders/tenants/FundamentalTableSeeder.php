@@ -19,16 +19,17 @@ class FundamentalTableSeeder extends Seeder
          * Criando fundamentos do voleibol
          */
         $fundamentals = [
-            1 => 'Saque',
-            2 => 'Recepção',
-            3 => 'Levantamento',
-            4 => 'Ataque',
-            5 => 'Bloqueio',
-            6 => 'Defesa',
+            1 => 'serve',
+            2 => 'reception',
+            3 => 'set_assist',
+            4 => 'attack',
+            5 => 'block',
+            6 => 'defense',
         ];
 
         /**
          * Criando fundamentos mais específicos do voleibol
+         * NOTE - Em algum momento deixar todos esses atributos traduzidos
          */
         $specificFundamentals = [
             1 => [

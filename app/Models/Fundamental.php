@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+
 
 class Fundamental extends Model
 {
@@ -20,6 +22,10 @@ class Fundamental extends Model
         'user_id',
         'created_at',
         'updated_at',
+    ];
+
+    protected $appends = [
+        'name_translate',
     ];
 
     public function user()
@@ -119,5 +125,16 @@ class Fundamental extends Model
         $query->when(isset($ids) && !empty($ids), function ($query) use ($ids) {
             $query->whereIn('fundamentals.id', $ids);
         });
+    }
+
+    /**
+     * Get the user's first name.
+     */
+    public function nameTranslate(): Attribute
+    {
+        return Attribute::make(
+            get: fn (?string $value) => __('Fundamentals.' . $this->name),
+            set: fn (string $value) => strtolower($value)
+        );
     }
 }

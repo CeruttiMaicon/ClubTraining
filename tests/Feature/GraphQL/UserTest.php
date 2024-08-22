@@ -686,7 +686,6 @@ class UserTest extends TestCase
             'declare roleId is required, expected error' => [
                 [
                     'name' => $faker->name,
-
                     'password' => $password,
                     'positionId' => [1],
                     'teamId' => [1],
@@ -704,7 +703,6 @@ class UserTest extends TestCase
             'edit user with permission that shouldnt have, expected error' => [
                 [
                     'name' => $faker->name,
-
                     'password' => $password,
                     'positionId' => [1],
                     'teamId' => [1],
@@ -722,7 +720,6 @@ class UserTest extends TestCase
             'edit user without permission, expected error' => [
                 [
                     'name' => $faker->name,
-
                     'password' => $password,
                     'positionId' => [1],
                     'teamId' => [1],
@@ -797,7 +794,6 @@ class UserTest extends TestCase
             'edit user with team, success' => [
                 [
                     'name' => $faker->name,
-
                     'password' => $password,
                     'positionId' => [1],
                     'teamId' => [1],
@@ -817,7 +813,6 @@ class UserTest extends TestCase
             'edit user with position, success' => [
                 [
                     'name' => $faker->name,
-
                     'password' => $password,
                     'roleId' => [2],
                     'positionId' => [1],
@@ -837,7 +832,6 @@ class UserTest extends TestCase
             'edit user, success' => [
                 [
                     'name' => $faker->name,
-
                     'password' => $password,
                     'positionId' => [1],
                     'teamId' => [1],
@@ -856,7 +850,6 @@ class UserTest extends TestCase
             'edit user with birth date, success' => [
                 [
                     'name' => $faker->name,
-
                     'password' => $password,
                     'birthDate' => $faker->date(),
                     'positionId' => [1],
@@ -876,7 +869,6 @@ class UserTest extends TestCase
             'edit user with 2 roles, success' => [
                 [
                     'name' => $faker->name,
-
                     'password' => $password,
                     'positionId' => [1],
                     'teamId' => [1],
@@ -895,7 +887,6 @@ class UserTest extends TestCase
             'text password less than 6 characters, expected error' => [
                 [
                     'name' => $faker->name,
-
                     'password' => '12345',
                     'positionId' => [1],
                     'teamId' => [1],
@@ -913,8 +904,25 @@ class UserTest extends TestCase
             'text password with 6 characters, success' => [
                 [
                     'name' => $faker->name,
-
                     'password' => $password,
+                    'positionId' => [1],
+                    'teamId' => [1],
+                    'roleId' => [2],
+                ],
+                'typeMessageError' => false,
+                'expectedMessage' => false,
+                'expected' => [
+                    'data' => [
+                        'userEdit' => self::$data,
+                    ],
+                ],
+                'hasTeam' => false,
+                'hasPermission' => true,
+            ],
+            'text password not send, expected success' => [
+                [
+                    'name' => $faker->name,
+                    'password' => null,
                     'positionId' => [1],
                     'teamId' => [1],
                     'roleId' => [2],
@@ -950,7 +958,6 @@ class UserTest extends TestCase
                 [
                     'name' => ' ',
                     'password' => $password,
-
                     'positionId' => [1],
                     'teamId' => [1],
                     'roleId' => [2],
@@ -968,7 +975,6 @@ class UserTest extends TestCase
                 [
                     'name' => 'Th',
                     'password' => $password,
-
                     'positionId' => [1],
                     'teamId' => [1],
                     'roleId' => [2],
